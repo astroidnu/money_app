@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "14020337029",
+    "firebase_url": "https://moneyapp-44aa8.firebaseio.com",
+    "project_id": "moneyapp-44aa8",
+    "storage_bucket": "moneyapp-44aa8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14020337029:android:b91499095abfb57139f8ec",
+        "android_client_info": {
+          "package_name": "com.azuka.money_app_v1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "14020337029-0aof8rd8ov4oav1r9piuuustqnpargkv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.azuka.money_app_v1",
+            "certificate_hash": "55bf64cca57be668ff9628761d8375c4177b7fb7"
+          }
+        },
+        {
+          "client_id": "14020337029-eppttfknh0lg98res4vusah4sm56apru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzZnEnSHWOMxF9KEbaroX4rviPD3KqQBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "14020337029-eppttfknh0lg98res4vusah4sm56apru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
