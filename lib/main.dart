@@ -1,13 +1,14 @@
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
-import 'package:money_app_v1/ui/home_screen.dart';
+import 'package:money_app_v1/di/injector.dart';
 import 'package:money_app_v1/ui/onboarding_screen.dart';
-import 'package:money_app_v1/util/navigation_controller.dart';
 
 import 'model/onboarding_data.dart';
 
-void main() => runApp(MyApp());
+void main(){
+  WidgetsFlutterBinding.ensureInitialized();
+  Injector.setup();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
 
@@ -37,18 +38,14 @@ class MyApp extends StatelessWidget {
     ),
   ];
 
-  static FirebaseAnalytics analytics = FirebaseAnalytics();
-  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Coba aja dulu',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: OnboardingScreen(onboardingData: onboardingList, analytics: analytics, observer: observer,)
+      home: OnboardingScreen(onboardingData: onboardingList)
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:money_app_v1/di/injector.dart';
 import 'package:money_app_v1/model/onboarding_data.dart';
 import 'package:money_app_v1/res/color_palette.dart';
 import 'package:money_app_v1/util/navigation_controller.dart';
@@ -11,20 +12,15 @@ import 'onboarding_item_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   final List<OnboardingData> onboardingData;
-  final FirebaseAnalytics analytics;
-  final FirebaseAnalyticsObserver observer;
 
-  OnboardingScreen({Key key, @required this.onboardingData, this.analytics, this.observer}) : super(key: key);
+  OnboardingScreen({Key key, @required this.onboardingData}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _OnboardingScreenState(analytics: analytics);
+  State<StatefulWidget> createState() => _OnboardingScreenState();
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  final FirebaseAnalytics analytics;
-
-  _OnboardingScreenState({this.analytics});
-
+  final FirebaseAnalytics analytics = Injector.resolve<FirebaseAnalytics>();
   SwiperController swiperController = SwiperController();
   int position = 0;
 
