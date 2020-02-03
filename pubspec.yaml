@@ -26,6 +26,7 @@ dependencies:
   flutter_swiper: ^1.1.6
   firebase_analytics: ^5.0.10
   kiwi: ^0.2.0
+  firebase_remote_config: ^0.3.0+1
 
 dev_dependencies:
   flutter_test:
