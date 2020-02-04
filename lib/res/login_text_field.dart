@@ -5,8 +5,9 @@ import 'package:money_app_v1/res/color_palette.dart';
 class LoginTextField extends StatelessWidget {
   final String hintText;
   final bool isPassword;
+  final TextEditingController textEditingController;
 
-  LoginTextField({Key key, @required this.hintText, @required this.isPassword}): super(key: key);
+  LoginTextField({Key key, @required this.hintText, @required this.isPassword, this.textEditingController}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +27,7 @@ class LoginTextField extends StatelessWidget {
             contentPadding: const EdgeInsets.symmetric(horizontal: 16.0)
           ),
           obscureText: isPassword,
+          controller: textEditingController,
         ),
       ),
     );

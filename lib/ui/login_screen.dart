@@ -11,14 +11,28 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   String _dropdownValue;
 
-  List<String> _dropDownItems = ['SD', 'SMP', 'SMA', 'D3', 'D4/S1', 'S2', 'S3', 'Other'];
+  List<String> _dropDownItems = [
+    'SD',
+    'SMP',
+    'SMA',
+    'D3',
+    'D4/S1',
+    'S2',
+    'S3',
+    'Other'
+  ];
+
+  TextEditingController _teUsernameController = TextEditingController();
+  TextEditingController _tePasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text("Login dulu bro"),
         backgroundColor: ColorPalette.freshAir,
@@ -37,6 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
               key: Key('tfUsername'),
               hintText: "Username",
               isPassword: false,
+              textEditingController: _teUsernameController,
             ),
             SizedBox(
               height: 20,
@@ -45,20 +60,21 @@ class _LoginScreenState extends State<LoginScreen> {
               key: Key('tfPassword'),
               hintText: "Password",
               isPassword: true,
+              textEditingController: _tePasswordController,
             ),
             SizedBox(
               height: 20,
             ),
-          CommonDropdown(
-            key: Key('ddEducation'),
-            value: _dropdownValue,
-            dropdownItems: _dropDownItems,
-            onChange: (String selectedValue) {
-              setState(() {
-                _dropdownValue = selectedValue;
-              });
-            },
-          ),
+            CommonDropdown(
+              key: Key('ddEducation'),
+              value: _dropdownValue,
+              dropdownItems: _dropDownItems,
+              onChange: (String selectedValue) {
+                setState(() {
+                  _dropdownValue = selectedValue;
+                });
+              },
+            ),
             SizedBox(
               height: 20,
             ),
@@ -66,13 +82,32 @@ class _LoginScreenState extends State<LoginScreen> {
               color: ColorPalette.richMaroon,
               key: Key('btnSubmit'),
               onPressed: () {
-                NavigationController.navigateToHomeScreen(context);
+                if (_teUsernameController.text.isEmpty) {
+                  _showSnackBar("Username cannot be empty");
+                } else if (_teUsernameController.text.isEmpty) {
+                  _showSnackBar("Password cannot be empty");
+                } else if (_teUsernameController.text == "azuka" &&
+                    _tePasswordController.text == "azuka") {
+                  NavigationController.navigateToHomeScreen(context);
+                } else {
+                  _showSnackBar("Username & Password = 'azuka");
+                }
               },
-              child: Text("Submit", style: TextStyle(color: Colors.white),),
+              child: Text(
+                "Submit",
+                style: TextStyle(color: Colors.white),
+              ),
             )
           ],
         ),
       ),
     );
+  }
+
+  void _showSnackBar(String message) {
+    final snackBar = SnackBar(
+      content: Text(message),
+    );
+    _scaffoldKey.currentState.showSnackBar(snackBar);
   }
 }
