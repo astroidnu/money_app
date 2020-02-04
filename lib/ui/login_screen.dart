@@ -1,10 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:money_app_v1/res/color_palette.dart';
+import 'package:money_app_v1/res/common_drop_down.dart';
 import 'package:money_app_v1/res/login_text_field.dart';
 import 'package:money_app_v1/util/navigation_controller.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+
+  String _dropdownValue;
+
+  List<String> _dropDownItems = ['SD', 'SMP', 'SMA', 'D3', 'D4/S1', 'S2', 'S3', 'Other'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +46,19 @@ class LoginScreen extends StatelessWidget {
               hintText: "Password",
               isPassword: true,
             ),
+            SizedBox(
+              height: 20,
+            ),
+          CommonDropdown(
+            key: Key('ddEducation'),
+            value: _dropdownValue,
+            dropdownItems: _dropDownItems,
+            onChange: (String selectedValue) {
+              setState(() {
+                _dropdownValue = selectedValue;
+              });
+            },
+          ),
             SizedBox(
               height: 20,
             ),
