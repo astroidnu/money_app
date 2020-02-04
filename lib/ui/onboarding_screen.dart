@@ -65,7 +65,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         position = widget.onboardingData.length - 1;
                         skipIntro();
                       } else {
-                        NavigationController.navigateToHomeScreen(context);
+                        NavigationController.navigateToLoginScreen(context);
                       }
                     },
                     child: Text(
