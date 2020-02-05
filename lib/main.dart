@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:money_app_v1/bloc/province_bloc/province_bloc.dart';
 import 'package:money_app_v1/di/injector.dart';
 import 'package:money_app_v1/ui/home_screen.dart';
 import 'package:money_app_v1/ui/onboarding_screen.dart';
@@ -10,7 +12,10 @@ import 'model/onboarding_data.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Injector.setup();
-  runApp(MyApp());
+  runApp(BlocProvider(
+    child: MyApp(),
+    create: (context) => Injector.resolve<ProvinceBloc>(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -53,14 +58,13 @@ class MyApp extends StatelessWidget {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Scaffold(
                   body: Container(
-                    color: Colors.pink,
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  )
-              );
+                color: Colors.pink,
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ));
             }
             return remoteConfigUtils.getBooleanData(
                     key: AppConstants.TAG_IS_SHOW_ONBOARDING)

@@ -27,6 +27,9 @@ dependencies:
   firebase_analytics: ^5.0.10
   kiwi: ^0.2.0
   firebase_remote_config: ^0.3.0+1
+  dio: ^3.0.8
+  equatable: ^1.0.2
+  flutter_bloc: ^3.1.0
 
 dev_dependencies:
   flutter_test:

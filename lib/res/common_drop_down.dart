@@ -9,9 +9,9 @@ class CommonDropdown extends StatelessWidget {
 
   CommonDropdown(
       {Key key,
-      @required this.value,
-      @required this.dropdownItems,
-      @required this.onChange})
+        @required this.value,
+        @required this.dropdownItems,
+        @required this.onChange})
       : super(key: key);
 
   @override
