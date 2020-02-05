@@ -30,6 +30,7 @@ dependencies:
   dio: ^3.0.8
   equatable: ^1.0.2
   flutter_bloc: ^3.1.0
+  charts_flutter: ^0.8.1
 
 dev_dependencies:
   flutter_test:

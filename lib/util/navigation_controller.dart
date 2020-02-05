@@ -4,6 +4,7 @@ import 'package:money_app_v1/model/onboarding_data.dart';
 import 'package:money_app_v1/ui/home_screen.dart';
 import 'package:money_app_v1/ui/login_screen.dart';
 import 'package:money_app_v1/ui/onboarding_screen.dart';
+import 'package:money_app_v1/ui/report_screen.dart';
 
 class NavigationController {
 
@@ -23,6 +24,10 @@ class NavigationController {
 
   static void navigateToLoginScreen(BuildContext context){
     _navigateTo(context, LoginScreen());
+  }
+
+  static void navigateToReportScreen(BuildContext context){
+    _navigateTo(context, ReportScreen());
   }
 
 }
