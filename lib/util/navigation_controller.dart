@@ -14,8 +14,16 @@ class NavigationController {
     ));
   }
 
-  static void navigateToOnBoardingScreen(BuildContext context, {List<OnboardingData> onboardingData}){
-    _navigateTo(context, OnboardingScreen(onboardingData: onboardingData));
+  static _navigateReplacedTo(BuildContext context, Widget widget){
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => widget
+    ));
+  }
+
+  static void navigateToOnBoardingScreen(BuildContext context, {List<OnboardingData> onboardingData, bool isReplaced = false}){
+    isReplaced
+    ? _navigateTo(context, OnboardingScreen())
+    : _navigateReplacedTo(context, OnboardingScreen());
   }
 
   static void navigateToHomeScreen(BuildContext context){

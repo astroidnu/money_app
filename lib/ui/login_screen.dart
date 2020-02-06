@@ -4,6 +4,7 @@ import 'package:money_app_v1/res/color_palette.dart';
 import 'package:money_app_v1/res/common_drop_down.dart';
 import 'package:money_app_v1/res/login_text_field.dart';
 import 'package:money_app_v1/util/navigation_controller.dart';
+import 'package:money_app_v1/util/routes.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -88,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   _showSnackBar("Password cannot be empty");
                 } else if (_teUsernameController.text == "azuka" &&
                     _tePasswordController.text == "azuka") {
-                  NavigationController.navigateToHomeScreen(context);
+                  Navigator.pushReplacementNamed(context, HomeRoute);
                 } else {
                   _showSnackBar("Username & Password = 'azuka");
                 }

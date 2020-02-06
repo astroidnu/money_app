@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'dart:convert' show json;
-import 'package:money_app_v1/model/Province.dart';
+import 'package:money_app_v1/model/province.dart';
 
 abstract class NetworkServiceProvider {
 

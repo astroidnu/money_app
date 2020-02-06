@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:money_app_v1/model/Province.dart';
+import 'package:money_app_v1/model/province.dart';
 
 abstract class ProvinceState extends Equatable {
   const ProvinceState();

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:money_app_v1/bloc/province_bloc/province_event.dart';
 import 'package:money_app_v1/bloc/province_bloc/province_state.dart';
 import 'package:money_app_v1/data_layer/repository.dart';
-import 'package:money_app_v1/model/Province.dart';
 
 class ProvinceBloc extends Bloc<ProvinceEvent, ProvinceState> {
 

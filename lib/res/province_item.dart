@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:money_app_v1/model/Province.dart';
-import 'package:money_app_v1/util/navigation_controller.dart';
+import 'package:money_app_v1/model/province.dart';
+import 'package:money_app_v1/util/routes.dart';
 
 class ProvinceItem extends StatelessWidget {
 
@@ -14,7 +14,7 @@ class ProvinceItem extends StatelessWidget {
     return ListTile(
       title: Text(province.name),
       onTap: () {
-        NavigationController.navigateToReportScreen(context);
+        Navigator.pushReplacementNamed(context, ReportRoute, arguments: null);
       },
     );
   }

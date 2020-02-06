@@ -2,14 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:money_app_v1/res/color_palette.dart';
 
-class CustomBottomNavigation extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _CustomBottomNavigationState();
-}
+class CustomBottomNavigation extends StatelessWidget {
 
-class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
+  final int selectedIndex;
+  final Function(int) onTap;
 
-  int _selectedIndex = 0;
+  CustomBottomNavigation({this.selectedIndex, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +21,8 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
         showUnselectedLabels: false,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text("")
+              icon: Icon(Icons.home),
+              title: Text("")
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_balance_wallet),
@@ -35,21 +33,16 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
               title: Text("")
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              title: Text(""),
+            icon: Icon(Icons.settings),
+            title: Text(""),
           ),
         ],
-        currentIndex: _selectedIndex,
+        currentIndex: selectedIndex,
         selectedItemColor: ColorPalette.richMaroon,
         unselectedItemColor: Colors.white,
-        onTap: _onItemTapped,
+        onTap: onTap,
       ),
     );
   }
 
-  void _onItemTapped(int index){
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 }

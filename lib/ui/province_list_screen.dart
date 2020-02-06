@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:money_app_v1/bloc/province_bloc/province_bloc.dart';
 import 'package:money_app_v1/bloc/province_bloc/province_event.dart';
 import 'package:money_app_v1/bloc/province_bloc/province_state.dart';
-import 'package:money_app_v1/model/Province.dart';
+import 'package:money_app_v1/model/province.dart';
 import 'package:money_app_v1/res/province_item.dart';
 
 class ProvinceListScreen extends StatefulWidget {
@@ -25,7 +25,11 @@ class _ProvinceListScreenState extends State<ProvinceListScreen> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(title: Text("Province List"),),
+      appBar: AppBar(
+        title: Text("Province List"),
+        leading: null,
+        actions: null,
+      ),
       body: BlocBuilder<ProvinceBloc, ProvinceState>(
         builder: (context, state) {
           if(state is ProvinceLoading){
