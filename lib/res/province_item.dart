@@ -14,7 +14,7 @@ class ProvinceItem extends StatelessWidget {
     return ListTile(
       title: Text(province.name),
       onTap: () {
-        Navigator.pushReplacementNamed(context, ReportRoute, arguments: null);
+        Navigator.pushNamed(context, ReportRoute, arguments: null);
       },
     );
   }
