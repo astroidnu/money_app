@@ -1,40 +1,59 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:charts_flutter/flutter.dart';
 import 'package:money_app_v1/model/income.dart';
 import 'package:money_app_v1/model/outcome.dart';
+import 'package:money_app_v1/res/custom_bar_chart.dart';
 
 class ReportScreen extends StatelessWidget {
-  List<Income> incomeList = [
+  final List<Income> incomeList = [
     Income(month: "January", amount: 200),
     Income(month: "February", amount: 30),
     Income(month: "March", amount: 60),
     Income(month: "April", amount: 37),
   ];
 
-  List<Outcome> outcomeList = [
+  final List<Outcome> outcomeList = [
     Outcome(month: "January", amount: 154),
     Outcome(month: "February", amount: 35),
     Outcome(month: "March", amount: 100),
     Outcome(month: "April", amount: 80),
   ];
 
-  bool animate = true;
+  final bool animate = true;
 
   @override
   Widget build(BuildContext context) {
-    List<charts.Series<dynamic, String>> listSeries = [
-      charts.Series<Income, String>(
+    List<Series<dynamic, String>> listSeries = [
+      Series<Income, String>(
         id: "Pemasukan",
         domainFn: (Income income, _) => income.month,
         measureFn: (Income income, _) => income.amount,
         data: incomeList,
+        labelAccessorFn: (Income income, int index) => "${income.amount}",
+        outsideLabelStyleAccessorFn: (Income income, int index) =>
+            TextStyleSpec(color: MaterialPalette.green.shadeDefault),
+        fillColorFn: (Income income, int index) {
+          if (income.month=="February"){
+            return MaterialPalette.green.shadeDefault.darker;
+          }
+          return MaterialPalette.green.shadeDefault.lighter;
+        },
       ),
-      charts.Series<Outcome, String>(
+      Series<Outcome, String>(
         id: "Pemasukan",
         domainFn: (Outcome outcome, _) => outcome.month,
         measureFn: (Outcome outcome, _) => outcome.amount,
         data: outcomeList,
+        labelAccessorFn: (Outcome outcome, int index) => "${outcome.amount}",
+        outsideLabelStyleAccessorFn: (Outcome outcome, int index) =>
+            TextStyleSpec(color: MaterialPalette.green.shadeDefault),
+        fillColorFn: (Outcome outcome, int index) {
+          if (outcome.month=="February"){
+            return MaterialPalette.red.shadeDefault.darker;
+          }
+          return MaterialPalette.red.shadeDefault.lighter;
+        },
       ),
     ];
 
@@ -42,17 +61,18 @@ class ReportScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Report"),
       ),
-      body: _buildChart(listSeries),
-    );
-  }
-
-  Widget _buildChart(List<charts.Series> listSeries) {
-    return charts.BarChart(
-      listSeries,
-      animate: true,
-      barGroupingType: charts.BarGroupingType.grouped,
-      animationDuration: Duration(seconds: 2),
-      defaultInteractions: false,
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Center(
+          child: SizedBox(
+              height: 300,
+              child: CustomBarChart(
+                listSeries,
+                animate: animate,
+              )),
+        ),
+      ),
     );
   }
 }
