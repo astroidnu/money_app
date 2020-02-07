@@ -5,6 +5,7 @@ import 'package:money_app_v1/di/injector.dart';
 import 'package:money_app_v1/ui/home_screen.dart';
 import 'package:money_app_v1/ui/onboarding_screen.dart';
 import 'package:money_app_v1/util/app_constants.dart';
+import 'package:money_app_v1/util/push_notification.dart';
 import 'package:money_app_v1/util/remote_config_utils.dart';
 import 'package:money_app_v1/util/routes.dart';
 
@@ -19,9 +20,24 @@ void main() async {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final RemoteConfigUtils remoteConfigUtils =
       Injector.resolve<RemoteConfigUtils>();
+
+  PushNotification pushNotification;
+
+  @override
+  void initState() {
+    super.initState();
+
+    pushNotification = PushNotification(/*context: context*/);
+    Injector.container.registerInstance(pushNotification);
+  }
 
   @override
   Widget build(BuildContext context) {
